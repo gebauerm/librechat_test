@@ -1,0 +1,3 @@
+[submodule "LibreChat"]
+	path = LibreChat
+	url = git@github.com:danny-avila/LibreChat.git

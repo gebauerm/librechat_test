@@ -2,11 +2,20 @@
 
 This is a test repository for LibreChat, with the purpose to test it and try out its Agent functionalities. The Repo is organizred as followed:
 * The project index points to all files we want to put into version control, here we change files
-* LibreChat is added as a submodule. The Submodule points to the productive state of LibreChat. Dont update the submodule! In this folder we start LibreChat
+* LibreChat is added as a submodule. The Submodule points to the productive state of LibreChat. Dont update the submodule! In this folder we start LibreChat.
 
-We will edit files in the project root and move them into the LibreChat folder.
+We will edit files in the project root and move them into the LibreChat folder. Everytime a file is updated, make sure to copy it into the LibreChat folder.
+
+# Prerequisites
+
+- added to the repo librechat_test
+- podman desktop
+- some editor (vscode)
 
 # Track Guide
+
+This Track Guide shall teach you some basic functionalities of LibreChat. Make sure to go through it.
+Have fun!
 
 ## Running LibreChat
 
@@ -22,7 +31,12 @@ We will edit files in the project root and move them into the LibreChat folder.
             UID=1000
             GID=1000
 
-4. Start LibreChat by typing `docker compose up`. This will start serveral containers, with Docker Compose. Docker Compose is a light orchestration tool for containers. LibreChat is a collection of multiple containers communicating with each other. In case you have issues with the configuration and run into errors, you can test your configurations faster by restarting the LibreChat Container. This can be done by `docker container restart LibreChat`
+4. Start LibreChat by typing `docker-compose up` or if you use podman `podman-compose up`. In case of podman always replace "docker" with "podman" for all command line interactions.
+Docker Compose will start serveral containers. Docker Compose is a light orchestration tool for containers (as well as podman compose). LibreChat is a collection of multiple containers communicating with each other. Check out all LibreChat containers by typing `docker container ps`.
+Do you see what components need to be started to run LibreChat?
+
+In case you have issues with the configuration and run into errors, you can test your configurations faster by restarting the LibreChat Container. This can be done by `docker container restart LibreChat`
+For instance, change outcommed the "UID" again, and restart the LibreChat container, you may run into an error now.
 
 
 
@@ -30,7 +44,7 @@ We will edit files in the project root and move them into the LibreChat folder.
 
 ### Mistral
 
-1. Create a copy of the file `./LibreChat/.env.example` and plance the copy at `./LibreChat/.env`
+1. Create a copy of the file `./LibreChat/.env.example` and give the following path: `./LibreChat/.env`
 
 2. We will provide you with an API Key. Take this key and paste it into the newly created _.env_ file under `MISTRAL_API_KEY=<key>`.
 Move the following files into the LibreChat folder:
@@ -52,7 +66,7 @@ Otherwise head to the [documentation](https://www.librechat.ai/docs/configuratio
 
 In this example we will connect an archivX MCP Server to LibreChat.
 Wit this MCP Server we will be able to download and search papers on ArchivX.
-We will use [Smithery](https://smithery.ai/) to find a suiting mcp server.
+We will use [Smithery](https://smithery.ai/) to find a suiting mcp server. When going to smithery, connect it to your github account. Please read carefully which data is shared with smithery.
 
 [Smithery](https://smithery.ai/) provides a lot of MCP Servers that can be started, right with LibreChat. We will use [Academa](https://smithery.ai/server/@IlyaGusev/academia_mcp) from smithery. Smithery offers direct integration with LibreChat.
 
@@ -85,6 +99,19 @@ If you paid attention you will see that the content matches the one written in t
 ![mcp](./doc/mcp.png). There click on "academia_mcp".
 5. Search for a the paper "Attention is all you need" and ask to download it. A Link should appear that should direct you to a pdf.
 
+
+### Example with Github
+
+          mcpServers:
+            github_mcp:
+                command: npx
+                args:
+                - -y
+                - "@smithery/cli@latest"
+                - run
+                - "@smithery-ai/github"
+                - --key
+                - <key from Smithery>
 
 ### Browse more MCP Server
 

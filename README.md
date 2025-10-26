@@ -97,12 +97,12 @@ To achieve this do the following:
             academia_mcp:
                 command: npx
                 args:
-                - -y
+                - "-y"
                 - "@smithery/cli@latest"
-                - run
+                - "run"
                 - "@IlyaGusev/academia_mcp"
-                - --key
-                - <key from Smithery>
+                - "--key"
+                - "<key from Smithery>"
 
 The key you need is written in the json-format within smithery. Paste in the correct key.
 If you paid attention you will see that the content matches the one written in the json at [academia](https://smithery.ai/server/@IlyaGusev/academia_mcp).
@@ -112,26 +112,8 @@ If you paid attention you will see that the content matches the one written in t
 ![mcp](./doc/mcp.png). There click on "academia_mcp".
 5. Search for a the paper "Attention is all you need" and ask to download it. A Link should appear that should direct you to a pdf.
 
-### Example with Gmail
-
-https://smithery.ai/server/@shinzo-labs/gmail-mcp
-
-### Example with Github
-
-          mcpServers:
-            github_mcp:
-                command: npx
-                args:
-                - -y
-                - "@smithery/cli@latest"
-                - run
-                - "@smithery-ai/github"
-                - --key
-                - <key from Smithery>
-
 
 ### Example with Gmail
-
 
         gmail_mcp:
             command: npx
@@ -141,7 +123,7 @@ https://smithery.ai/server/@shinzo-labs/gmail-mcp
             - "run"
             - "@shinzo-labs/gmail-mcp"
             - "--key"
-            - <key>
+            - "<key>"
             - "--profile"
             - "innocent-lamprey-PKBKvW"
 

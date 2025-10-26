@@ -129,10 +129,33 @@ https://smithery.ai/server/@shinzo-labs/gmail-mcp
                 - --key
                 - <key from Smithery>
 
+
+### Example with Gmail
+
+
+        gmail_mcp:
+            command: npx
+            args:
+            - "-y"
+            - "@smithery/cli@latest"
+            - "run"
+            - "@shinzo-labs/gmail-mcp"
+            - "--key"
+            - <key>
+            - "--profile"
+            - "innocent-lamprey-PKBKvW"
+
+See detail here:
+https://github.com/shinzo-labs/gmail-mcp
+You have to add yourself as testuser to the app:
+https://console.cloud.google.com/auth/audience?authuser=1&project=gmail-mcp-476116
+Under "Target Group"
+
 ### Browse more MCP Server
 
 No you are set to experiment.
 Add more MCP Servers by using the json configurations.
 Explore [Smithery](https://smithery.ai/).
+
 
 

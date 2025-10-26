@@ -19,7 +19,7 @@ Have fun!
 
 ## Running LibreChat
 
-1. Clone the Repository with `git clone git@github.com:gebauerm/librechat_test.git --recurse submodules`. This will also load the LibreChat Repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. We will keep configuration files in the parent repository.
+1. Clone the Repository with `git clone git@github.com:gebauerm/librechat_test.git --recurse`. This will also load the LibreChat Repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. We will keep configuration files in the parent repository.
 2. Change into the LibreChat Folder. Create the following folders:
     * Meili_data_v1.12
     * data-node
@@ -31,13 +31,14 @@ Have fun!
             UID=1000
             GID=1000
 
-4. Start LibreChat by typing `docker-compose up` or if you use podman `podman-compose up`. In case of podman always replace "docker" with "podman" for all command line interactions.
+4. Start LibreChat by typing `docker-compose up` or if you use podman `podman compose up`. In case of podman always replace "docker" with "podman" for all command line interactions.
 Docker Compose will start serveral containers. Docker Compose is a light orchestration tool for containers (as well as podman compose). LibreChat is a collection of multiple containers communicating with each other. Check out all LibreChat containers by typing `docker container ps`.
 Do you see what components need to be started to run LibreChat?
 
 In case you have issues with the configuration and run into errors, you can test your configurations faster by restarting the LibreChat Container. This can be done by `docker container restart LibreChat`
 For instance, change outcommed the "UID" again, and restart the LibreChat container, you may run into an error now.
 
+When LibreChat is running it is accessible under [http://localhost:3080](http://localhost:3080/login), you wll be prompted with a Login Page. Create a new user and login with that user. Email and Username does not have to be real.
 
 
 ## Add a LLM Provider to LibreChat
@@ -50,6 +51,7 @@ For instance, change outcommed the "UID" again, and restart the LibreChat contai
 Move the following files into the LibreChat folder:
 * librechat.yaml
 * docker-compose.override.yml
+Afterwards restart the all containers with with `podman-compose restart`
 
 Otherwise head to the [documentation](https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints/mistral)
 
@@ -59,6 +61,17 @@ Otherwise head to the [documentation](https://www.librechat.ai/docs/configuratio
 
 ## Azure OpenAI
 
+This part explains how to utilize the model that is deployed in the resource group of our azure cloud.
+
+### Get Azure OpenAI API Key
+
+1. Go to the [Azure Portal](https://portal.azure.com/#home) and klick on "cog-aad-sbx", this is an Azure OpenAI Insance.
+![portal](./doc/aure_portal.PNG)
+
+2. Click on "Go to Azure AI Foundary portal"
+![foundry](./doc/azure_open_ai.png)
+
+3. In the Foundry you will find the URL and the APIKey of the deployed openAI Instance. Copy the URL and the API Key.
 
 ## Add an MCP Server
 
@@ -94,11 +107,14 @@ To achieve this do the following:
 The key you need is written in the json-format within smithery. Paste in the correct key.
 If you paid attention you will see that the content matches the one written in the json at [academia](https://smithery.ai/server/@IlyaGusev/academia_mcp).
 
-3. Restart LibreChat with `docker container restart LibreChat`
+3. Restart LibreChat with `docker container restart LibreChat` or using STRG+C and then again `docker-compose up`.
 4. Open LibreChat and go to _"MCP Server"_
 ![mcp](./doc/mcp.png). There click on "academia_mcp".
 5. Search for a the paper "Attention is all you need" and ask to download it. A Link should appear that should direct you to a pdf.
 
+### Example with Gmail
+
+https://smithery.ai/server/@shinzo-labs/gmail-mcp
 
 ### Example with Github
 
@@ -118,3 +134,5 @@ If you paid attention you will see that the content matches the one written in t
 No you are set to experiment.
 Add more MCP Servers by using the json configurations.
 Explore [Smithery](https://smithery.ai/).
+
+

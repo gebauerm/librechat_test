@@ -17,7 +17,7 @@ We will edit files in the project root and move them into the LibreChat folder. 
 This Track Guide shall teach you some basic functionalities of LibreChat. Make sure to go through it.
 Have fun!
 
-## Running LibreChat
+## 1. Running LibreChat
 
 1. Clone the Repository with `git clone git@github.com:gebauerm/librechat_test.git --recurse`. This will also load the LibreChat Repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. We will keep configuration files in the parent repository.
 2. Change into the LibreChat Folder. Create the following folders:
@@ -41,7 +41,7 @@ For instance, change outcommed the "UID" again, and restart the LibreChat contai
 When LibreChat is running it is accessible under [http://localhost:3080](http://localhost:3080/login), you wll be prompted with a Login Page. Create a new user and login with that user. Email and Username does not have to be real.
 
 
-## Add a LLM Provider to LibreChat
+## 2. Add a LLM Provider to LibreChat
 
 ### Mistral
 
@@ -59,7 +59,7 @@ Otherwise head to the [documentation](https://www.librechat.ai/docs/configuratio
 ![model](./doc/model_selection.png)
 
 
-## Azure OpenAI
+### Azure OpenAI
 
 This part explains how to utilize the model that is deployed in the resource group of our azure cloud.
 
@@ -73,9 +73,7 @@ This part explains how to utilize the model that is deployed in the resource gro
 
 3. In the Foundry you will find the URL and the APIKey of the deployed openAI Instance. Copy the URL and the API Key.
 
-## Add an MCP Server
-
-### Example with archivX
+### 3 ArchiX Agent
 
 In this example we will connect an archivX MCP Server to LibreChat.
 Wit this MCP Server we will be able to download and search papers on ArchivX.
@@ -113,7 +111,7 @@ If you paid attention you will see that the content matches the one written in t
 5. Search for a the paper "Attention is all you need" and ask to download it. A Link should appear that should direct you to a pdf.
 
 
-### Example with Gmail
+## 4. Gmail Agenten anbinden
 
         gmail_mcp:
             command: npx

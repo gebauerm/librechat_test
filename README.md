@@ -8,9 +8,41 @@ We will edit files in the project root and move them into the LibreChat folder. 
 
 # Prerequisites
 
-- added to the repo librechat_test
-- podman desktop
-- some editor (vscode)
+## Clone the Repository
+
+Here is how you [clone a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+
+## Podman Desktop + Podman + WSL
+Download the [Installer for Windows](https://podman-desktop.io/downloads) and start the Installation process. Afterwards open Podman Desktop, from there you can install podman. To do so navigate to the following page in Podman Desktop
+ If you dont have Windows Subsystem for Linux, the following installation will ask you to install it, please do so.
+![podman_install](./doc/podman_install.png)
+
+Verify the installation by typing `windows_key + r` and then type "cmd". Within the opening terminal type "podman". The following window should appear.
+![verify](./doc/podman_command.png)
+
+Congratulations, you installed podman!
+
+For Troubleshooting:
+
+https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md
+
+https://gist.github.com/brainfoolong/117a0f7562cb2c51b824db4011d40d29
+
+
+## Podman Compose
+
+You also need to install podman compose. Please refer to this [tutorial](https://podman-desktop.io/docs/compose/setting-up-compose).
+
+## Texteditor and Command Line
+It is recommended, to use a text editor or IDE. A good solution can be [VSCode](https://code.visualstudio.com/Download).
+Install it, you can edit files and run the command line with it.
+If you are not familiar with VSCode have a look [here](https://code.visualstudio.com/docs/getstarted/getting-started).
+You can also use any other tool, just two things are important:
+
+* you can edit any files
+* you can access the command line and start podman from it
+
+Hence [Notepad++](https://notepad-plus-plus.org/downloads/) and [CMD](https://kostnix-web.de/tipps-tricks/eingabeaufforderung-cmd-als-administrator-oeffnen/) or [Powershell](https://learn.microsoft.com/de-de/powershell/scripting/windows-powershell/starting-windows-powershell?view=powershell-7.5) are also enough.
 
 # Track Guide
 

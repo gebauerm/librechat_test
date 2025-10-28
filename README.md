@@ -9,8 +9,8 @@ We will edit files in the project root and move them into the LibreChat folder. 
 # Prerequisites
 
 ## Clone the Repository
-
-Here is how you [clone a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+Create a [Github](https://github.com/) account
+and get familiar with [cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
 ## Podman Desktop + Podman + WSL
 Download the [Installer for Windows](https://podman-desktop.io/downloads) and start the Installation process. Afterwards open Podman Desktop, from there you can install podman. To do so navigate to the following page in Podman Desktop
@@ -51,7 +51,7 @@ Have fun!
 
 ## Running LibreChat
 
-1. Clone the Repository with `git clone git@github.com:gebauerm/librechat_test.git --recurse`. This will also load the LibreChat Repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. We will keep configuration files in the parent repository.
+1. __Clone the Repository with this command__: `git clone git@github.com:gebauerm/librechat_test.git --recurse`. This will also load the LibreChat Repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. We will keep configuration files in the parent repository.
 2. Change into the LibreChat Folder. Create the following folders:
     * Meili_data_v1.12
     * data-node
@@ -91,23 +91,7 @@ Otherwise head to the [documentation](https://www.librechat.ai/docs/configuratio
 ![model](./doc/model_selection.png)
 
 
-## Azure OpenAI
-
-This part explains how to utilize the model that is deployed in the resource group of our azure cloud.
-
-### Get Azure OpenAI API Key
-
-1. Go to the [Azure Portal](https://portal.azure.com/#home) and klick on "cog-aad-sbx", this is an Azure OpenAI Insance.
-![portal](./doc/aure_portal.PNG)
-
-2. Click on "Go to Azure AI Foundary portal"
-![foundry](./doc/azure_open_ai.png)
-
-3. In the Foundry you will find the URL and the APIKey of the deployed openAI Instance. Copy the URL and the API Key.
-
-## Add an MCP Server
-
-### Example with archivX
+## Add the archivX Agent
 
 In this example we will connect an archivX MCP Server to LibreChat.
 Wit this MCP Server we will be able to download and search papers on ArchivX.
@@ -134,7 +118,7 @@ To achieve this do the following:
                 - "run"
                 - "@IlyaGusev/academia_mcp"
                 - "--key"
-                - "<key from Smithery>"
+                - "<key>"
 
 The key you need is written in the json-format within smithery. Paste in the correct key.
 If you paid attention you will see that the content matches the one written in the json at [academia](https://smithery.ai/server/@IlyaGusev/academia_mcp).
@@ -145,7 +129,7 @@ If you paid attention you will see that the content matches the one written in t
 5. Search for a the paper "Attention is all you need" and ask to download it. A Link should appear that should direct you to a pdf.
 
 
-### Example with Gmail
+## Add the Gmail Agent
 
         gmail_mcp:
             command: npx
@@ -157,7 +141,7 @@ If you paid attention you will see that the content matches the one written in t
             - "--key"
             - "<key>"
             - "--profile"
-            - "innocent-lamprey-PKBKvW"
+            - "<profile>"
 
 See detail here:
 https://github.com/shinzo-labs/gmail-mcp
@@ -165,11 +149,8 @@ You have to add yourself as testuser to the app:
 https://console.cloud.google.com/auth/audience?authuser=1&project=gmail-mcp-476116
 Under "Target Group"
 
-### Browse more MCP Server
+## Browse more MCP Server
 
 No you are set to experiment.
 Add more MCP Servers by using the json configurations.
 Explore [Smithery](https://smithery.ai/).
-
-
-

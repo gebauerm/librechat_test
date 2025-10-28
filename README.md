@@ -91,7 +91,7 @@ Otherwise head to the [documentation](https://www.librechat.ai/docs/configuratio
 ![model](./doc/model_selection.png)
 
 
-### 3 ArchiX Agent
+## 3. ArchiX Agent
 
 In this example we will connect an archivX MCP Server to LibreChat.
 Wit this MCP Server we will be able to download and search papers on ArchivX.

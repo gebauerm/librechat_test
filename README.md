@@ -1,159 +1,257 @@
-# librechat_test
+# LibreChat Test Repository
 
-This is a test repository for LibreChat, with the purpose to test it and try out its Agent functionalities. The Repo is organizred as followed:
-* The project index points to all files we want to put into version control, here we change files
-* LibreChat is added as a submodule. The Submodule points to the productive state of LibreChat. Dont update the submodule! In this folder we start LibreChat.
+This is a demo repository for LibreChat, designed to help you learn and experiment with its Agent functionalities and configuration.
 
-We will edit files in the project root and move them into the LibreChat folder. Everytime a file is updated, make sure to copy it into the LibreChat folder.
+## Repository Structure
 
-# Prerequisites
+This repository is organized as follows:
+
+* **Root directory**: Contains configuration files (`librechat.yaml`, `docker-compose.override.yml`) that are under version control. Edit these files here.
+* **LibreChat subdirectory**: A git submodule pointing to the official LibreChat repository. Don't update the submodule! This is where you run LibreChat.
+
+**Workflow**: Configuration files in the root directory are mounted into the LibreChat container via `docker-compose.override.yml`. When you edit `librechat.yaml` in the root and copy it into the LibreChat folder, the changes are automatically available to LibreChat when you restart the containers.
+
+## Prerequisites
+
+**Note**: This tutorial is primarily designed for Windows using Podman. However, the same principles apply to Docker on any platform (Linux, macOS, Windows). Simply replace `podman` with `docker` in all commands.
 
 ## Clone the Repository
-Create a [Github](https://github.com/) account
-and get familiar with [cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+
+Create a [GitHub](https://github.com/) account and get familiar with [cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
 ## Podman Desktop + Podman + WSL
-Download the [Installer for Windows](https://podman-desktop.io/downloads) and start the Installation process. Afterwards open Podman Desktop, from there you can install podman. To do so navigate to the following page in Podman Desktop
- If you dont have Windows Subsystem for Linux, the following installation will ask you to install it, please do so.
+
+1. Download the [Installer for Windows](https://podman-desktop.io/downloads) and start the installation process.
+2. Open Podman Desktop. From there, you can install Podman by navigating to the Dashboard and following the setup instructions.
+3. If you don't have Windows Subsystem for Linux (WSL), the installation will prompt you to install it. Please do so.
+
 ![podman_install](./doc/podman_install.png)
 
-Verify the installation by typing `windows_key + r` and then type "cmd". Within the opening terminal type "podman". The following window should appear.
+**Verify the installation:**
+
+1. Press `Windows Key + R` to open the Run dialog
+2. Type `cmd` and press Enter to open the command prompt
+3. Type `podman` in the terminal
+
+You should see the Podman help output as shown below:
+
 ![verify](./doc/podman_command.png)
 
-Congratulations, you installed podman!
+Congratulations, you've installed Podman!
 
-For Troubleshooting:
+**Troubleshooting resources:**
 
-https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md
-
-https://gist.github.com/brainfoolong/117a0f7562cb2c51b824db4011d40d29
-
+* [Podman for Windows Tutorial](https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md)
+* [Podman Desktop Troubleshooting Guide](https://gist.github.com/brainfoolong/117a0f7562cb2c51b824db4011d40d29)
 
 ## Podman Compose
 
-You also need to install podman compose. Please refer to this [tutorial](https://podman-desktop.io/docs/compose/setting-up-compose).
+You also need to install Podman Compose. Please refer to this [tutorial](https://podman-desktop.io/docs/compose/setting-up-compose).
 
-## Texteditor and Command Line
-It is recommended, to use a text editor or IDE. A good solution can be [VSCode](https://code.visualstudio.com/Download).
-Install it, you can edit files and run the command line with it.
-If you are not familiar with VSCode have a look [here](https://code.visualstudio.com/docs/getstarted/getting-started).
-You can also use any other tool, just two things are important:
+## Text Editor and Command Line
 
-* you can edit any files
-* you can access the command line and start podman from it
+It is recommended to use a text editor or IDE. A good solution is [VSCode](https://code.visualstudio.com/Download). With VSCode, you can edit files and run command line operations. If you're not familiar with VSCode, check out the [VSCode Getting Started guide](https://code.visualstudio.com/docs/getstarted/getting-started).
 
-Hence [Notepad++](https://notepad-plus-plus.org/downloads/) and [CMD](https://kostnix-web.de/tipps-tricks/eingabeaufforderung-cmd-als-administrator-oeffnen/) or [Powershell](https://learn.microsoft.com/de-de/powershell/scripting/windows-powershell/starting-windows-powershell?view=powershell-7.5) are also enough.
+You can also use any other tool. Just ensure two things:
 
-# Track Guide
+* You can edit files
+* You can access the command line and run Podman/Docker commands
 
-This Track Guide shall teach you some basic functionalities of LibreChat. Make sure to go through it.
-Have fun!
+Hence, [Notepad++](https://notepad-plus-plus.org/downloads/) combined with [CMD](https://kostnix-web.de/tipps-tricks/eingabeaufforderung-cmd-als-administrator-oeffnen/) or [PowerShell](https://learn.microsoft.com/de-de/powershell/scripting/windows-powershell/starting-windows-powershell?view=powershell-7.5) are also sufficient.
+
+## Getting Started Tutorial
+
+This tutorial will teach you the basic functionalities of LibreChat and how to configure AI agents with MCP (Model Context Protocol) servers. Make sure to go through each section in order. Have fun!
 
 ## 1. Running LibreChat
 
-1. __Clone the Repository with this command__: `git clone git@github.com:gebauerm/librechat_test.git --recurse`. This will also load the LibreChat Repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. We will keep configuration files in the parent repository.
-2. Change into the LibreChat Folder. Create the following folders:
-    * Meili_data_v1.12
-    * data-node
-    * images
-    * uploads
-    * logs
-3. Create an _.env_ file from _.env.example_ and uncomment the liness 68 and 69, to:
+1. **Clone the repository** with this command:
 
-            UID=1000
-            GID=1000
+   ```bash
+   git clone git@github.com:gebauerm/librechat_test.git --recurse-submodules
+   ```
 
-4. Start LibreChat by typing `docker-compose up` or if you use podman `podman compose up`. In case of podman always replace "docker" with "podman" for all command line interactions.
-Docker Compose will start serveral containers. Docker Compose is a light orchestration tool for containers (as well as podman compose). LibreChat is a collection of multiple containers communicating with each other. Check out all LibreChat containers by typing `docker container ps`.
-Do you see what components need to be started to run LibreChat?
+   This will also load the LibreChat repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. Configuration files are managed in the parent repository.
 
-In case you have issues with the configuration and run into errors, you can test your configurations faster by restarting the LibreChat Container. This can be done by `docker container restart LibreChat`
-For instance, change outcommed the "UID" again, and restart the LibreChat container, you may run into an error now.
+2. **Change into the LibreChat folder** and create the following directories:
 
-When LibreChat is running it is accessible under [http://localhost:3080](http://localhost:3080/login), you wll be prompted with a Login Page. Create a new user and login with that user. Email and Username does not have to be real.
+   ```bash
+   cd LibreChat
+   mkdir -p Meili_data_v1.12 data-node images uploads logs
+   ```
 
+3. **Create an `.env` file** from `.env.example` and uncomment lines 68 and 69:
 
-## 2. Add a LLM Provider to LibreChat
+   ```bash
+   cp .env.example .env
+   ```
 
-### Mistral
+   Then edit the `.env` file and set:
 
-1. Create a copy of the file `./LibreChat/.env.example` and give the following path: `./LibreChat/.env`
+   ```bash
+   UID=1000
+   GID=1000
+   ```
 
-2. We will provide you with an API Key. Take this key and paste it into the newly created _.env_ file under `MISTRAL_API_KEY=<key>`.
-Move the following files into the LibreChat folder:
-* librechat.yaml
-* docker-compose.override.yml
-Afterwards restart the all containers with with `podman-compose restart`
+4. **Start LibreChat** by typing:
 
-Otherwise head to the [documentation](https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints/mistral)
+   ```bash
+   podman compose up
+   ```
 
-3. Select a Mistral Model from the top left.
-![model](./doc/model_selection.png)
+   (If using Docker instead of Podman, use `docker compose up`)
 
+   Docker/Podman Compose will start several containers. Docker Compose is a lightweight orchestration tool for containers. LibreChat is a collection of multiple containers communicating with each other. You can check all running LibreChat containers by typing:
 
-## 3. ArchiX Agent
+   ```bash
+   podman ps
+   ```
 
-In this example we will connect an archivX MCP Server to LibreChat.
-Wit this MCP Server we will be able to download and search papers on ArchivX.
-We will use [Smithery](https://smithery.ai/) to find a suiting mcp server. When going to smithery, connect it to your github account. Please read carefully which data is shared with smithery.
+   Do you see what components need to be started to run LibreChat?
 
-[Smithery](https://smithery.ai/) provides a lot of MCP Servers that can be started, right with LibreChat. We will use [Academa](https://smithery.ai/server/@IlyaGusev/academia_mcp) from smithery. Smithery offers direct integration with LibreChat.
+**Troubleshooting:**
 
-__I recommend to use the json representation and put it under the mcpServer Section in LibreChat__
+If you have issues with the configuration and run into errors, you can restart the LibreChat container faster with:
 
-To achieve this do the following:
+```bash
+podman restart LibreChat
+```
 
-1. Go tp the Json Section of [academia](https://smithery.ai/server/@IlyaGusev/academia_mcp). The contents of the json is what you need.
+For example, if you comment out the `UID` value again and restart the LibreChat container, you may encounter an error.
+If this doesnt help to fix a problem restart LibreChat completely by pressing `STRG + c` in the command line. Afterwards use `docker compose up` again.
 
-![smithery_academia](./doc/smithery.png)
+**Accessing LibreChat:**
 
-2. Open `librechat.yaml` and add the following lines __under__ _mcpServers_. Mind the yaml structre.
+When LibreChat is running, access it at [http://localhost:3080](http://localhost:3080/login). You will be prompted with a login page. Create a new user and log in. The email and username don't have to be real.
 
-          mcpServers:
-            academia_mcp:
-                command: npx
-                args:
-                - "-y"
-                - "@smithery/cli@latest"
-                - "run"
-                - "@IlyaGusev/academia_mcp"
-                - "--key"
-                - "<key>"
+## 2. Add an LLM Provider to LibreChat
 
-The key you need is written in the json-format within smithery. Paste in the correct key.
-If you paid attention you will see that the content matches the one written in the json at [academia](https://smithery.ai/server/@IlyaGusev/academia_mcp).
+In this section, you'll configure LibreChat to use Mistral AI as an LLM provider.
 
-3. Restart LibreChat with `docker container restart LibreChat` or using STRG+C and then again `docker-compose up`.
-4. Open LibreChat and go to _"MCP Server"_
-![mcp](./doc/mcp.png). There click on "academia_mcp".
-5. Search for a the paper "Attention is all you need" and ask to download it. A Link should appear that should direct you to a pdf.
+1. **Configure the API key:**
 
-For credentials ask the repo owner.
+   We will provide you with a Mistral API key. Add this key to your `.env` file in the `LibreChat` directory:
 
-## 4. Add Gmail Agent
+   ```bash
+   MISTRAL_API_KEY=<your-key-here>
+   ```
 
-Add the following MCP Server to your `librechat.yaml`.
+2. **Configuration files are already set up!**
 
-        gmail_mcp:
-            command: npx
-            args:
-            - "-y"
-            - "@smithery/cli@latest"
-            - "run"
-            - "@shinzo-labs/gmail-mcp"
-            - "--key"
-            - "<key>"
-            - "--profile"
-            - "<profile>"
+   The `librechat.yaml` and `docker-compose.override.yml` files in the root directory already contain the necessary Mistral configuration. These files are automatically mounted into the LibreChat container.
 
-See detail here:
-https://github.com/shinzo-labs/gmail-mcp
-For credentials ask the repo owner.
+3. **Restart the containers:**
 
-Ask via LibreChat to write a Mail about Siamese Cats being the best financial advisors to a mail adress of your choice. Go to the provided mail account and look into drafts. You will see a written mail, that you can send.
+   ```bash
+   podman compose restart
+   ```
 
-## Browse more MCP Server
+4. **Select a Mistral model:**
 
-No you are set to experiment.
-Add more MCP Servers by using the json configurations.
-Explore [Smithery](https://smithery.ai/).
+   Open LibreChat in your browser and select a Mistral model from the dropdown in the top left.
+
+   ![model](./doc/model_selection.png)
+
+For more details, refer to the [official documentation](https://www.librechat.ai/docs/configuration/librechat_yaml/ai_endpoints/mistral).
+
+## 3. arXiv Agent
+
+In this section, you'll connect an arXiv MCP (Model Context Protocol) server to LibreChat. With this MCP server, you'll be able to download and search academic papers on arXiv.
+
+**What is MCP?** Model Context Protocol (MCP) is a standard that allows AI agents to connect to external tools and data sources. In this case, we're connecting to arXiv's academic paper database.
+
+We'll use [Smithery](https://smithery.ai/) to find a suitable MCP server. When connecting to Smithery, you'll need to link it to your GitHub account. Please read carefully which data is shared with Smithery.
+
+[Smithery](https://smithery.ai/) provides many MCP servers that can be integrated directly with LibreChat. We'll use [Academia](https://smithery.ai/server/@IlyaGusev/academia_mcp) from Smithery, which offers seamless integration with LibreChat.
+
+**Steps:**
+
+1. **Get the MCP server configuration:**
+
+   Go to the JSON section of [Academia](https://smithery.ai/server/@IlyaGusev/academia_mcp). You'll need the configuration details shown there.
+
+   ![smithery_academia](./doc/smithery.png)
+
+2. **Add the configuration to `librechat.yaml`:**
+
+   Open the `librechat.yaml` file in the root directory and add the following configuration under the `mcpServers` section. Be mindful of the YAML structure and indentation:
+
+   ```yaml
+   mcpServers:
+     academia_mcp:
+       command: npx
+       args:
+         - "-y"
+         - "@smithery/cli@latest"
+         - "run"
+         - "@IlyaGusev/academia_mcp"
+         - "--key"
+         - "<key>"
+   ```
+
+   The key you need is provided in the JSON format on Smithery. Paste in the correct key. If you compare carefully, you'll see that this configuration matches the JSON format shown on the [Academia](https://smithery.ai/server/@IlyaGusev/academia_mcp) page.
+
+3. **Restart LibreChat:**
+
+   ```bash
+   podman restart LibreChat
+   ```
+
+   Alternatively, press `Ctrl+C` to stop the containers and then run `podman compose up` again.
+
+4. **Test the arXiv agent:**
+
+   * Open LibreChat and navigate to the MCP Server section:
+
+     ![mcp](./doc/mcp.png)
+
+   * Click on "academia_mcp"
+
+5. **Try it out:**
+
+   Search for the paper "Attention is all you need" and ask the agent to download it. A link should appear directing you to the PDF.
+
+**For credentials, ask the repository owner.**
+
+## 4. Gmail Agent
+
+In this section, you'll add a Gmail MCP server that allows LibreChat to compose and draft emails on your behalf.
+
+**Steps:**
+
+1. **Add the Gmail MCP server configuration to `librechat.yaml`:**
+
+   ```yaml
+   gmail_mcp:
+     command: npx
+     args:
+       - "-y"
+       - "@smithery/cli@latest"
+       - "run"
+       - "@shinzo-labs/gmail-mcp"
+       - "--key"
+       - "<key>"
+       - "--profile"
+       - "<profile>"
+   ```
+
+   For more details, see the [Gmail MCP documentation](https://github.com/shinzo-labs/gmail-mcp).
+
+2. **Get credentials:**
+
+   For the required credentials (`<key>` and `<profile>`), ask the repository owner.
+
+3. **Test the Gmail agent:**
+
+   Ask LibreChat to write an email about "Siamese Cats being the best financial advisors" to an email address of your choice. Navigate to the provided Gmail account and check the drafts folder. You should see a drafted email that you can review and send.
+
+## 5. Explore More MCP Servers
+
+Now you're set to experiment! You can add more MCP servers using the same JSON configuration approach.
+
+**Resources:**
+
+* Browse available MCP servers on [Smithery](https://smithery.ai/)
+* Follow the same pattern: get the JSON configuration, add it to `librechat.yaml`, restart LibreChat, and test it out
+
+The possibilities are endless—explore different tools and integrations to enhance your LibreChat experience!

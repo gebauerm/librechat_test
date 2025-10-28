@@ -215,39 +215,24 @@ We'll use [Smithery](https://smithery.ai/) to find a suitable MCP server. When c
 
 ## 4. Gmail Agent
 
-In this section, you'll add a Gmail MCP server that allows LibreChat to compose and draft emails on your behalf.
+In this section, you'll add a [Gmail MCP server](https://smithery.ai/server/@shinzo-labs/gmail-mcp) that allows LibreChat to compose and draft emails on your behalf.
 
 **Steps:**
 
-1. **Add the Gmail MCP server configuration to `librechat.yaml`:**
+1. **Add Client Confoguration:**
+    Smithery will prompt you to add details to the following configuration:
+    ![alt text](image.png).
+    To achieve this please refer to the documentation of smithery.
 
-   ```yaml
-   gmail_mcp:
-     command: npx
-     args:
-       - "-y"
-       - "@smithery/cli@latest"
-       - "run"
-       - "@shinzo-labs/gmail-mcp"
-       - "--key"
-       - "<key>"
-       - "--profile"
-       - "<profile>"
-   ```
+    For this configuration you will be provided with a testaccount, together with client credentials. The test account is a google account that you can freely use. Ask the repo owner for details.
 
-   For more details, see the [Gmail MCP documentation](https://github.com/shinzo-labs/gmail-mcp).
-
-2. **Get credentials:**
-
-   For the required credentials (`<key>` and `<profile>`), ask the repository owner.
-
-3. **Test the Gmail agent:**
+2. **Test the Gmail agent:**
 
    Ask LibreChat to write an email about "Siamese Cats being the best financial advisors" to an email address of your choice. Navigate to the provided Gmail account and check the drafts folder. You should see a drafted email that you can review and send.
 
 ## 5. Explore More MCP Servers
 
-Now you're set to experiment! You can add more MCP servers using the same JSON configuration approach.
+Now you're set to experiment! You can add more MCP servers using the same JSON configuration approach. You can also use the provided google account to experiment. If you need more google account APIs activated contact the repo owner.
 
 **Resources:**
 

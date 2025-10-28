@@ -49,7 +49,7 @@ Hence [Notepad++](https://notepad-plus-plus.org/downloads/) and [CMD](https://ko
 This Track Guide shall teach you some basic functionalities of LibreChat. Make sure to go through it.
 Have fun!
 
-## Running LibreChat
+## 1. Running LibreChat
 
 1. __Clone the Repository with this command__: `git clone git@github.com:gebauerm/librechat_test.git --recurse`. This will also load the LibreChat Repository as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) into `./LibreChat`. We will keep configuration files in the parent repository.
 2. Change into the LibreChat Folder. Create the following folders:
@@ -73,7 +73,7 @@ For instance, change outcommed the "UID" again, and restart the LibreChat contai
 When LibreChat is running it is accessible under [http://localhost:3080](http://localhost:3080/login), you wll be prompted with a Login Page. Create a new user and login with that user. Email and Username does not have to be real.
 
 
-## Add a LLM Provider to LibreChat
+## 2. Add a LLM Provider to LibreChat
 
 ### Mistral
 
@@ -91,7 +91,7 @@ Otherwise head to the [documentation](https://www.librechat.ai/docs/configuratio
 ![model](./doc/model_selection.png)
 
 
-## Add the archivX Agent
+### 3 ArchiX Agent
 
 In this example we will connect an archivX MCP Server to LibreChat.
 Wit this MCP Server we will be able to download and search papers on ArchivX.
@@ -128,8 +128,11 @@ If you paid attention you will see that the content matches the one written in t
 ![mcp](./doc/mcp.png). There click on "academia_mcp".
 5. Search for a the paper "Attention is all you need" and ask to download it. A Link should appear that should direct you to a pdf.
 
+For credentials ask the repo owner.
 
-## Add the Gmail Agent
+## 4. Add Gmail Agenten
+
+Add the following MCP Server to your `librechat.yaml`.
 
         gmail_mcp:
             command: npx
@@ -145,9 +148,9 @@ If you paid attention you will see that the content matches the one written in t
 
 See detail here:
 https://github.com/shinzo-labs/gmail-mcp
-You have to add yourself as testuser to the app:
-https://console.cloud.google.com/auth/audience?authuser=1&project=gmail-mcp-476116
-Under "Target Group"
+For credentials ask the repo owner.
+
+Ask via LibreChat to write a Mail about Siamese Cats being the best financial advisors to a mail adress of your choice. Go to the provided mail account and look into drafts. You will see a written mail, that you can send.
 
 ## Browse more MCP Server
 

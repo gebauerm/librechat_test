@@ -130,7 +130,7 @@ If you paid attention you will see that the content matches the one written in t
 
 For credentials ask the repo owner.
 
-## 4. Add Gmail Agenten
+## 4. Add Gmail Agent
 
 Add the following MCP Server to your `librechat.yaml`.
 

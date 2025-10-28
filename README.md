@@ -9,7 +9,7 @@ This repository is organized as follows:
 * **Root directory**: Contains configuration files (`librechat.yaml`, `docker-compose.override.yml`) that are under version control. Edit these files here.
 * **LibreChat subdirectory**: A git submodule pointing to the official LibreChat repository. Don't update the submodule! This is where you run LibreChat.
 
-**Workflow**: Configuration files in the root directory are mounted into the LibreChat container via `docker-compose.override.yml`. When you edit `librechat.yaml` in the root, the changes are automatically available to LibreChat when you restart the containers.
+**Workflow**: Configuration files in the root directory are mounted into the LibreChat container via `docker-compose.override.yml`. When you edit `librechat.yaml` in the root and copy it into the LibreChat folder, the changes are automatically available to LibreChat when you restart the containers.
 
 ## Prerequisites
 
@@ -118,6 +118,7 @@ podman restart LibreChat
 ```
 
 For example, if you comment out the `UID` value again and restart the LibreChat container, you may encounter an error.
+If this doesnt help to fix a problem restart LibreChat completely by pressing `STRG + c` in the command line. Afterwards use `docker compose up` again.
 
 **Accessing LibreChat:**
 

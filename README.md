@@ -205,7 +205,7 @@ We'll use [Smithery](https://smithery.ai/) to find a suitable MCP server. When c
 
      ![mcp](./doc/mcp.png)
 
-   * Click on "academia_mcp"
+   * Click on "MCP Server" and choose "academia_mcp". 
 
 5. **Try it out:**
 

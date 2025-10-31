@@ -248,6 +248,14 @@ In this section, you'll add a [Gmail MCP server](https://smithery.ai/server/@shi
             - "<profile-gmail>"
 
     The credentials can be found in the provided mail account. For questions regarding credentials ask the Track Guide or refer to the presentation.
+    
+2. **Restart LibreChat:**
+
+   ```bash
+   podman restart LibreChat
+   ```
+
+   Alternatively, press `Ctrl+C` to stop the containers and then run `podman compose up` again.
 
 3. **Test the Gmail agent:**
 

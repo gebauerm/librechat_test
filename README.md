@@ -222,7 +222,10 @@ In this section, you'll add a [Gmail MCP server](https://smithery.ai/server/@shi
 
 1. **Add Client Confoguration:**
     Smithery will prompt you to add details to the following configuration:
+
     ![alt text](image.png).
+
+    To achieve this please refer to the documentation of smithery.
 
     To configure Client Secret and Client ID this please refer to the documentation of smithery.
 
@@ -246,7 +249,7 @@ In this section, you'll add a [Gmail MCP server](https://smithery.ai/server/@shi
 
     The credentials can be found in the provided mail account. For questions regarding credentials ask the Track Guide or refer to the presentation.
 
-2. **Test the Gmail agent:**
+3. **Test the Gmail agent:**
 
    Ask LibreChat to write an email about "Siamese Cats being the best financial advisors" to an email address of your choice. If you got issues with the Agent not starting, try to be more explicit to the generative Model. If a process starts and finishes, navigate to the provided Gmail account and check the drafts folder. You should see a drafted email that you can review and send.
 

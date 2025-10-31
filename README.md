@@ -18,6 +18,7 @@ This repository is organized as follows:
 ## Clone the Repository
 
 Create a [GitHub](https://github.com/) account and get familiar with [cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+Make sure to clone the repository with a [generated SSH-Key](https://docs.github.com/de/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and [add it to your github Account](https://docs.github.com/de/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
 ## Podman Desktop + Podman + WSL
 
@@ -186,7 +187,7 @@ We'll use [Smithery](https://smithery.ai/) to find a suitable MCP server. When c
          - "run"
          - "@IlyaGusev/academia_mcp"
          - "--key"
-         - "<key>"
+         - "<smithery-key>"
    ```
 
    The key you need is provided in the JSON format on Smithery. Paste in the correct key. If you compare carefully, you'll see that this configuration matches the JSON format shown on the [Academia](https://smithery.ai/server/@IlyaGusev/academia_mcp) page.
@@ -205,7 +206,7 @@ We'll use [Smithery](https://smithery.ai/) to find a suitable MCP server. When c
 
      ![mcp](./doc/mcp.png)
 
-   * Click on "MCP Server" and choose "academia_mcp". 
+   * Click on "MCP Server" and choose "academia_mcp".
 
 5. **Try it out:**
 
@@ -222,13 +223,32 @@ In this section, you'll add a [Gmail MCP server](https://smithery.ai/server/@shi
 1. **Add Client Confoguration:**
     Smithery will prompt you to add details to the following configuration:
     ![alt text](image.png).
-    To achieve this please refer to the documentation of smithery.
 
-    For this configuration you will be provided with a testaccount, together with client credentials. The test account is a google account that you can freely use. Ask the repo owner for details.
+    To configure Client Secret and Client ID this please refer to the documentation of smithery.
+
+    For this configuration you will be provided with a testaccount, together with client credentials. The test account is a google account that you can freely use. Ask the repo owner for details or refer to the presentation.
+
+    **Alternative**
+
+    If you are struggeling use this configuration:
+
+        academia_mcp:
+        command: npx
+        args:
+            - "-y"
+            - "@smithery/cli@latest"
+            - "run"
+            - "@shinzo-labs/gmail-mcp"
+            - "--key"
+            - "<smithery-key>"
+            - "--profile"
+            - "<profile-gmail>"
+
+    The credentials can be found in the provided mail account. For questions regarding credentials ask the Track Guide or refer to the presentation.
 
 2. **Test the Gmail agent:**
 
-   Ask LibreChat to write an email about "Siamese Cats being the best financial advisors" to an email address of your choice. Navigate to the provided Gmail account and check the drafts folder. You should see a drafted email that you can review and send.
+   Ask LibreChat to write an email about "Siamese Cats being the best financial advisors" to an email address of your choice. If you got issues with the Agent not starting, try to be more explicit to the generative Model. If a process starts and finishes, navigate to the provided Gmail account and check the drafts folder. You should see a drafted email that you can review and send.
 
 ## 5. Explore More MCP Servers
 
